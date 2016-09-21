@@ -24,8 +24,7 @@ function ToggleBoxes(elem,status,children) {
   if (sisterDiv) {
     if (status) {
       sisterDiv.removeAttribute("hidden");
-
-    } else{
+    } else {
       sisterDiv.hidden = "hidden" ;
     }
   }
