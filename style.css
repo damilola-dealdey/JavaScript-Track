@@ -19,3 +19,35 @@ div.half{
   display: inline-block;
   float:left;
 }
+
+div.quarter{
+  margin: 0px;
+  width:25%;
+  display: inline-block;
+  float:left;
+}
+
+div.sizedDiv{
+  width: 1000px;
+  margin: 10px auto;
+  max-height: 100px;
+  height: 100px;
+  overflow-y: scroll;
+  padding: 5px;
+  background-color: white;
+}
+
+div.sideStep{
+  margin-top: 3px;
+  margin-left: 10px;
+}
+
+div.sideStep > span {
+  display: block;
+  margin-bottom: 2px;
+}
+
+div.centered {
+  width: 80%;
+  margin: 10px auto;
+}
