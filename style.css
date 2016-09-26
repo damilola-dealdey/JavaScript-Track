@@ -51,3 +51,19 @@ div.centered {
   width: 80%;
   margin: 10px auto;
 }
+
+#table {
+  width: 100%;
+}
+
+#table tr {
+  text-align: center;
+}
+
+.right{
+  float: right;
+}
+
+button {
+  padding: 5px;
+}
