@@ -1,3 +1,12 @@
+function ToggleButton(SetState,ElemId){
+  this.btn = document.getElementById(ElemId);
+  this.SetState = SetState;
+  this.btn.addEventListener("click",function() {
+      ToggleBoxes(SetState);
+  },false);
+}
+
+
 function ToggleBoxes(status) {
   var boxes = document.querySelectorAll("input.checkbox");
   for (var i = 0; i < boxes.length; i++) {
@@ -6,12 +15,5 @@ function ToggleBoxes(status) {
   }
 }
 
-var checkBtn = document.getElementById("allCheck");
-checkBtn.addEventListener("click",function() {
-    ToggleBoxes(true);
-},false);
-
-var uncheckBtn = document.getElementById("allUncheck");
-uncheckBtn.addEventListener("click",function() {
-    ToggleBoxes(false);
-},false);
+var checkBtn = new ToggleButton(true,"allCheck");
+var uncheckBtn = new ToggleButton(false,"allUncheck");
