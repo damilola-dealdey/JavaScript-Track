@@ -1,6 +1,16 @@
+function DayBox(elem){
+  this.box  = elem;
+  this.box.addEventListener("click",function() {
+     if (this.checked) {
+       BoxChecks(this);
+     }
+  },false);
+  this.day = elem.value;
+}
+
 function ToggleBoxes(status) {
-  for (var i = 0; i < _boxes.length; i++) {
-    _boxes[i].checked = status;
+  for (var i = 0; i < Days.length; i++) {
+    Days[i].box.checked = status;
   }
 }
 
@@ -8,9 +18,9 @@ function BoxChecks(selectedBox) {
   var valueArray = [];
   noneBox.checked = false;
   var count = 0;
-  for (var i = 0; i < _boxes.length; i++) {
+  for (var i = 0; i < Days.length; i++) {
     if(_boxes[i].checked) {
-      valueArray.push(_boxes[i].value)
+      valueArray.push(Days[i].day)
       count++;
     }
   }
@@ -28,11 +38,8 @@ noneBox.addEventListener("click",function() {
    }
 },false);
 
+var Days = [];
 var _boxes = document.querySelectorAll('input.checkbox');
 for (var i = 0; i < _boxes.length; i++) {
-  _boxes[i].addEventListener("click",function() {
-     if (this.checked) {
-       BoxChecks(this);
-     }
-  },false);
+  Days.push(new DayBox(_boxes[i]));
 }
