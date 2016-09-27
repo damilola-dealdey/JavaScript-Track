@@ -1,47 +1,48 @@
-function AddEvents(elemId,childBoxes){
-  var elem = document.getElementById(elemId);
-  if (elem) {
-    elem.addEventListener("click",function() {
-      ToggleBoxes(this, this.checked);
-      ToggleChildBoxes(childBoxes, this.checked);
-      if (childBoxes) {
-        childBoxes[childBoxes.length - 1].scrollIntoViewIfNeeded();
-      }
-    },false);
-    return elem;
+function Parent(ElemId, ChildBoxes ) {
+  var _parent = this;
+  this.Box = document.getElementById(ElemId);
+  this.DivSibling = this.Box.nextElementSibling;
+  this.Children = [];
+
+  for (var i = 0; i < ChildBoxes.length; i++) {
+    this.Children.push(new Child(ChildBoxes[i]));
   }
-  return null;
+
+  this.Box.addEventListener("click",function() {
+    _parent.ToggleChildren(this.checked);
+    _parent.Children[_parent.Children.length - 1].Box.scrollIntoViewIfNeeded();
+  },false);
+
 }
 
-function ToggleChildBoxes(boxes,status) {
-  for (var i = 0; i < boxes.length; i++) {
-    boxes[i].checked = status;
-  }
-}
-
-function ToggleBoxes(elem,status,children) {
-  var sisterDiv = elem.nextElementSibling;
-  if (sisterDiv) {
-    if (status) {
-      sisterDiv.removeAttribute("hidden");
-    } else {
-      sisterDiv.hidden = "hidden" ;
+Parent.prototype.ToggleChildren = function(status){
+  if (this.Box.checked) {
+    for (var i = 0; i < this.Children.length; i++) {
+      this.Children[i].Box.checked = true;
+      this.DivSibling.removeAttribute("hidden");
+    }
+  } else {
+    for (var i = 0; i < this.Children.length; i++) {
+      this.Children[i].Box.checked = false;
+      this.DivSibling.hidden = "hidden";
     }
   }
-}
+};
 
+function Child(Elem) {
+  this.Box = Elem;
+}
 
 var _colorBoxes = document.querySelectorAll('input.colorbox');
 var _movieBoxes = document.querySelectorAll('input.moviebox');
 var _drinksBoxes = document.querySelectorAll('input.drinkbox');
 var _bikesBoxes = document.querySelectorAll('input.bikebox');
 
-var colorBox = AddEvents('colorBox',_colorBoxes);
-var movieBox = AddEvents('movieBox', _movieBoxes);
-var drinksBox = AddEvents('drinksBox', _drinksBoxes);
-var bikesBox = AddEvents('bikesBox', _bikesBoxes);
-
-ToggleBoxes(colorBox, false);
-ToggleBoxes(movieBox, false);
-ToggleBoxes(drinksBox, false);
-ToggleBoxes(bikesBox, false);
+var colorBox = new Parent('colorBox', _colorBoxes);
+colorBox.ToggleChildren(false);
+var movieBox = new Parent('movieBox', _movieBoxes);
+movieBox.ToggleChildren(false);
+var drinksBox = new Parent('drinksBox', _drinksBoxes);
+drinksBox.ToggleChildren(false);
+var bikesBox = new Parent('bikesBox', _bikesBoxes);
+bikesBox.ToggleChildren(false);
