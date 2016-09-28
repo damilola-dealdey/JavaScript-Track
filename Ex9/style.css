@@ -1,0 +1,25 @@
+body {
+  display: table;
+  width: 100%;
+}
+
+div.content {
+  width: 80%;
+  display: table-row;
+  margin: 10px auto;
+  padding: 2px 10px;
+}
+
+div.leftPane {
+  display: table-cell;
+  width: 50%;
+}
+
+div.rightPane {
+  display: table-cell;
+  width: 50%;
+}
+
+select {
+  width:200px;
+}
