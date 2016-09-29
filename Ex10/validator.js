@@ -82,16 +82,16 @@ function DoValidation(){
 
 }
 
+var _document = document;
+var loginIdBox = _document.getElementById('loginId');
+var emailBox = _document.getElementById('email');
+var nameBox = _document.getElementById('myName');
+var timezoneBox = _document.getElementById('timezone');
+var homepageBox = _document.getElementById('homepage');
+var aboutBox = _document.getElementById('about');
+var notificationBox = _document.getElementById('notifications');
 
-var loginIdBox = document.getElementById('loginId');
-var emailBox = document.getElementById('email');
-var nameBox = document.getElementById('myName');
-var timezoneBox = document.getElementById('timezone');
-var homepageBox = document.getElementById('homepage');
-var aboutBox = document.getElementById('about');
-var notificationBox = document.getElementById('notifications');
-
-var formButton = document.getElementById('btnGO');
+var formButton = _document.getElementById('btnGO');
 formButton.addEventListener("click", function(){
   DoValidation();
 } , false);
