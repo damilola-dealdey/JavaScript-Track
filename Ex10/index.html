@@ -1,0 +1,104 @@
+<!Doctype html>
+<html>
+  <head>
+    <title>Javascript Track</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="form">
+        <h1 class="header">Registration Form</h1>
+        <div class="form-body">
+          <div class="form-top">
+
+            <div class="row">
+              <div class="left">
+                <label>Login Id</label>
+              </div>
+              <div class="right">
+                <input name="loginId" id="loginId" type="text" />
+              </div>
+            </div>
+
+            <div>
+              <br />
+            </div>
+
+            <div class="row">
+              <div class="left">
+                <label>Email</label>
+              </div>
+              <div class="right">
+                <input name="email" id="email" type="email" />
+              </div>
+            </div>
+
+            <div>
+              <br />
+            </div>
+
+            <div class="row">
+              <div class="left">
+                <label>Name</label>
+              </div>
+              <div class="right">
+                <input name="myName" id="myName" type="text" />
+              </div>
+            </div>
+
+            <div>
+              <br />
+            </div>
+
+            <div class="row">
+              <div class="left">
+                <label>Timezone</label>
+              </div>
+              <div class="right">
+                <select name="timezone" id="timezone">
+                  <option value="GMT">GMT</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <br />
+            </div>
+
+            <div class="row">
+              <div class="left">
+                <label>Home Page</label>
+              </div>
+              <div class="right">
+                <input name="homepage" id="homepage" type="text" />
+              </div>
+            </div>
+
+            <div>
+              <br />
+            </div>
+
+          </div>
+
+          <div class="form-bottom">
+            <div>
+              <label class="single">About Me</label>
+            </div>
+            <div class="bottomInput">
+              <textarea class="textarea" id="about" rows="6"></textarea>
+              <input type="checkbox" id="notifications" /> <strong>Receive notification of comments.</strong>
+              <p class="small">
+                You will be sent an email when someone posts comments to your blog or album.
+              </p>
+              <p class="bottom">Your password will be mailed to you.</p>
+              <p class="bottom"><button id="btnGO" >GO</button></p>
+            </div>
+
+          </div>
+
+        </div>
+    </div>
+    <script src="validator.js"></script>
+  </body>
+
+</html>
