@@ -1,6 +1,24 @@
 function Validator(){
-
+  this.init();
 }
+
+Validator.prototype.init = function () {
+  var dom = document;
+  var _this = this;
+  this.loginIdBox = dom.getElementById('loginId');
+  this.emailBox = dom.getElementById('email');
+  this.nameBox = dom.getElementById('myName');
+  this.timezoneBox = dom.getElementById('timezone');
+  this.homepageBox = dom.getElementById('homepage');
+  this.aboutBox = dom.getElementById('about');
+  this.notificationBox = dom.getElementById('notifications');
+
+  var formButton = dom.getElementById('btnGO');
+  formButton.addEventListener("click", function(){
+    _this.doValidation();
+  } , false);
+
+};
 
 Validator.prototype.HasValue = function (Elem){
   if (!Elem.value) {
@@ -30,59 +48,44 @@ Validator.prototype.HasMinValue = function(Elem, length) {
   return Elem.value.length >= length ;
 }
 
-var validator = new Validator();
-
-function DoValidation(){
+Validator.prototype.doValidation = function(){
   var allValid = true;
 
-  if (!validator.HasValue(loginIdBox)) {
+  if (!this.HasValue(this.loginIdBox)) {
       allValid = false;
       alert('Please provide your login Id');
   }
 
-  if (!validator.ValidateMail(emailBox)) {
+  if (!this.ValidateMail(this.emailBox)) {
       allValid = false;
       alert('Please provide a valid email address');
   }
 
-  if (!validator.HasValue(nameBox)) {
+  if (!this.HasValue(this.nameBox)) {
       allValid = false;
       alert('Please provide your name');
   }
 
-  if (!validator.HasValue(timezoneBox)) {
+  if (!this.HasValue(this.timezoneBox)) {
       allValid = false;
       alert('Please provide select your timezone');
   }
 
-  if (!validator.HasValue(homepageBox)) {
+  if (!this.HasValue(this.homepageBox)) {
       allValid = false;
       alert('Please provide your homepage');
   }
 
-  if (!validator.HasMinValue(aboutBox, 50)) {
+  if (!this.HasMinValue(this.aboutBox, 50)) {
       allValid = false;
       alert('Tell us about yourself in not less than 50 characters.');
   }
 
-  alert(notificationBox.checked ? 'You will receive notifications' : 'You will not receive notifications');
+  alert(this.notificationBox.checked ? 'You will receive notifications' : 'You will not receive notifications');
 
   if (allValid) {
     alert('All fields passed validation.');
   }
-
 }
 
-
-var loginIdBox = document.getElementById('loginId');
-var emailBox = document.getElementById('email');
-var nameBox = document.getElementById('myName');
-var timezoneBox = document.getElementById('timezone');
-var homepageBox = document.getElementById('homepage');
-var aboutBox = document.getElementById('about');
-var notificationBox = document.getElementById('notifications');
-
-var formButton = document.getElementById('btnGO');
-formButton.addEventListener("click", function(){
-  DoValidation();
-} , false);
+var validator = new Validator();
