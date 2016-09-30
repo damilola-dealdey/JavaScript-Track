@@ -9,13 +9,15 @@ function Parent(ElemId, ChildBoxes ) {
   }
 
   this.Box.addEventListener("click",function() {
-    _parent.ToggleChildren(this.checked);
+    _parent.toggleChildren(this.checked);
     _parent.Children[_parent.Children.length - 1].Box.scrollIntoViewIfNeeded();
   },false);
 
+  this.toggleChildren(false);
+
 }
 
-Parent.prototype.ToggleChildren = function(status){
+Parent.prototype.toggleChildren = function(status){
   if (this.Box.checked) {
     for (var i = 0; i < this.Children.length; i++) {
       this.Children[i].Box.checked = true;
@@ -39,10 +41,6 @@ var _drinksBoxes = document.querySelectorAll('input.drinkbox');
 var _bikesBoxes = document.querySelectorAll('input.bikebox');
 
 var colorBox = new Parent('colorBox', _colorBoxes);
-colorBox.ToggleChildren(false);
 var movieBox = new Parent('movieBox', _movieBoxes);
-movieBox.ToggleChildren(false);
 var drinksBox = new Parent('drinksBox', _drinksBoxes);
-drinksBox.ToggleChildren(false);
 var bikesBox = new Parent('bikesBox', _bikesBoxes);
-bikesBox.ToggleChildren(false);
