@@ -19,8 +19,11 @@ ToggleButton.prototype.init = function() {
 ToggleButton.prototype.toggleBoxes = function(status) {
   var boxes = document.querySelectorAll("input.checkbox");
   for (var i = 0; i < boxes.length; i++) {
-    var box = boxes[i];
-    status ? box.setAttribute("checked","") : box.removeAttribute("checked");
+    if (status) {
+      boxes[i].checked = true;
+    } else {
+      boxes[i].checked = false;
+    }
   }
 }
 
