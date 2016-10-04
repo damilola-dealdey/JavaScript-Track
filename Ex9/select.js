@@ -1,15 +1,15 @@
 function Select(selectElemId, transferToElemId , buttonELemId){
-  this.init(selectElemId, transferToElemId , buttonELemId);
-}
-
-Select.prototype.init = function(selectElemId, transferToElemId , buttonELemId) {
   var dom = document;
   this.myBox = dom.getElementById(selectElemId);
   this.transferToBox = dom.getElementById(transferToElemId);
   this.myButton = dom.getElementById(buttonELemId);
-  var _select = this;
+  this.init(selectElemId, transferToElemId , buttonELemId);
+}
+
+Select.prototype.init = function(selectElemId, transferToElemId , buttonELemId) {
+  var _this = this;
   this.myButton.addEventListener("click", function(){
-    _select.transfer();
+    _this.transfer();
   } , false);
 }
 
