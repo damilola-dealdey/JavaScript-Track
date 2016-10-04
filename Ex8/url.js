@@ -1,7 +1,18 @@
-var url = '';
-
-while (url == null || url.trim().length < 1) {
-  url = prompt("Enter Url", "");
+function Url(){
+  this.url = '';
+  this.newWindowConfig = 'height=450,width=400,top=10,left=10,status=no,menubar=no,location=no,scrollbars=no,resizable=no,toolbar=no';
+  this.open();
 }
 
-var newWindow = window.open(url,"newWindow","height=450,width=400,top=10,left=10,status=no,menubar=no,location=no,scrollbars=no,resizable=no,toolbar=no");
+Url.prototype.open = function(){
+  this.acceptUrl();
+  window.open(this.url,"newWindow",this.newWindowConfig);
+};
+
+Url.prototype.acceptUrl = function(){
+  while (this.url == null || this.url.trim().length < 1) {
+    this.url = prompt("Enter Url", "");
+  }
+};
+
+new Url();
