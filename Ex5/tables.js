@@ -1,32 +1,6 @@
 function Contact(name,email){
-  var _contact = this;
-  this.name = name;
-  this.email = email;
-  this.holdingRow = document.createElement("tr");
-  this.columnOne = makeACell();
-  this.columnTwo = makeACell();
-  this.columnThree = makeACell();
-  this.nameSpan = document.createElement("span");
-  this.emailSpan = document.createElement("span");
-  this.nameField = document.createElement("input");
-  this.emailField = document.createElement("input");
-  this.emailField.type = "email";
-  this.editButton = makeAButton("Edit");
-  this.deleteButton = makeAButton("Delete");
-  this.saveButton = makeAButton("Save");
-  this.saveButton.addEventListener("click", function(){
-    _contact.saveData(_contact);
-  } , false);
-  this.editButton.addEventListener("click", function(){
-    _contact.formify();
-  } , false);
-  this.deleteButton.addEventListener("click", function(){
-    table.tBodies[0].deleteRow(_contact.index);
-  } , false);
-  this.holdingRow.appendChild(this.columnOne);
-  this.holdingRow.appendChild(this.columnTwo);
-  this.holdingRow.appendChild(this.columnThree);
-  this.index = 0;
+
+  this.init();
 }
 
 Contact.prototype.flushColumns = function(){
@@ -77,6 +51,38 @@ Contact.prototype.saveData =  function () {
     this.Unformify();
   }
 };
+
+Contact.prototype.init = function (){
+  var _contact = this;
+  this.name = name;
+  this.email = email;
+  this.holdingRow = document.createElement("tr");
+  this.columnOne = makeACell();
+  this.columnTwo = makeACell();
+  this.columnThree = makeACell();
+  this.nameSpan = document.createElement("span");
+  this.emailSpan = document.createElement("span");
+  this.nameField = document.createElement("input");
+  this.emailField = document.createElement("input");
+  this.emailField.type = "email";
+  this.editButton = makeAButton("Edit");
+  this.deleteButton = makeAButton("Delete");
+  this.saveButton = makeAButton("Save");
+  this.saveButton.addEventListener("click", function(){
+    _contact.saveData(_contact);
+  } , false);
+  this.editButton.addEventListener("click", function(){
+    _contact.formify();
+  } , false);
+  this.deleteButton.addEventListener("click", function(){
+    table.tBodies[0].deleteRow(_contact.index);
+  } , false);
+  this.holdingRow.appendChild(this.columnOne);
+  this.holdingRow.appendChild(this.columnTwo);
+  this.holdingRow.appendChild(this.columnThree);
+  this.index = 0;
+}
+
 
 function makeAButton(text) {
   var button =  document.createElement("button");
