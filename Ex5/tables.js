@@ -1,6 +1,6 @@
 function Contact(name,email){
 
-  this.init();
+  this.init('','');
 }
 
 Contact.prototype.flushColumns = function(){
@@ -52,7 +52,7 @@ Contact.prototype.saveData =  function () {
   }
 };
 
-Contact.prototype.init = function (){
+Contact.prototype.init = function (name, email){
   var _contact = this;
   this.name = name;
   this.email = email;
