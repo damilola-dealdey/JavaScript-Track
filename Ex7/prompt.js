@@ -1,21 +1,24 @@
 function Prompt(){
   this.firstname = '';
   this.lastname = '';
+  this.collectData();
 }
 
-Prompt.prototype.SayHello = function(){
+Prompt.prototype.sayHello = function(){
   return 'Hello ' + this.firstname +  ' ' + this.lastname + '!';
-}
+};
 
-var person = new Prompt();
+Prompt.prototype.collectData = function(){
+  while (this.firstname == null || this.firstname.trim().length < 1) {
+    this.firstname = prompt("What is your first name ? ", "");
+  }
 
-while (person.firstname == null || person.firstname.trim().length < 1) {
-  person.firstname = prompt("What is your first name ? ", "");
-}
+  while (this.lastname == null || this.lastname.trim().length < 1) {
+    this.lastname = prompt("What is your last name ? ", "");
+  }  
 
-while (person.lastname == null || person.lastname.trim().length < 1) {
-  person.lastname = prompt("What is your last name ? ", "");
-}
+  document.getElementById('heading').innerText = this.sayHello();
+};
 
-var head = document.getElementById('heading');
-head.innerText = person.SayHello();
+new Prompt();
+
