@@ -1,19 +1,18 @@
 function DayBox(elem){
-  this.init();
+  this.days = document.querySelectorAll('input.checkbox');
+  this.noneBox = document.getElementById('check-box-none');
+  this.init();  
 }
 
 DayBox.prototype.init = function () {
-  var _this = this;
-  this.days = document.querySelectorAll('input.checkbox');
-  this.days = document.querySelectorAll('input.checkbox');
+  var _this = this;  
   for (var i = 0; i < this.days.length; i++) {
     this.days[i].addEventListener("click",function() {
        if (this.checked) {
          _this.boxCheck(this);
        }
-    },false);
-  }
-  this.noneBox = document.getElementById('check-box-none');
+    },false);  }
+  
   this.noneBox.addEventListener("click",function() {
      if(this.checked) {
         _this.toggleBoxes(false);
@@ -25,7 +24,7 @@ DayBox.prototype.toggleBoxes = function (status) {
   for (var i = 0; i < this.days.length; i++) {
     this.days[i].checked = status;
   }
-}
+};
 
 DayBox.prototype.boxCheck = function (selectedBox) {
   var valueArray = [];
