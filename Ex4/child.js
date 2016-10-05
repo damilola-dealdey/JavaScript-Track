@@ -1,3 +1,3 @@
-function Child(Elem) {
-  this.box = Elem;
+function Child(elem) {
+  this.box = elem;
 }

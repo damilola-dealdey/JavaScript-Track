@@ -1,11 +1,11 @@
-function Parent(ElemId, ChildBoxes ) {
+function Parent(elemId, childBoxes ) {
   var _parent = this;
-  this.box = document.getElementById(ElemId);
+  this.box = document.getElementById(elemId);
   this.divSibling = this.box.nextElementSibling;
   this.children = [];
 
-  for (var i = 0; i < ChildBoxes.length; i++) {
-    this.children.push(new Child(ChildBoxes[i]));
+  for (var i = 0; i < childBoxes.length; i++) {
+    this.children.push(new Child(childBoxes[i]));
   }
 
   this.box.addEventListener("click",function() {
