@@ -1,4 +1,4 @@
-function DayBox(elem){
+function DayBox(){
   this.days = document.querySelectorAll('input.checkbox');
   this.noneBox = document.getElementById('check-box-none');
   this.init();  
