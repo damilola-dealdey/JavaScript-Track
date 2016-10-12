@@ -15,7 +15,10 @@ Match.prototype.test = function(){
   var dom = document;
   var boxOne = dom.getElementById('box-one');
   var boxTwo = dom.getElementById('box-two');
-  boxTwo.value = this.RegString.test(boxOne.value.trim());
+  if(!isNaN(boxOne.value.trim())){
+    boxTwo.value = this.RegString.test(boxOne.value.trim());
+  }
+  
 };
 
 new Match();
