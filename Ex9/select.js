@@ -11,7 +11,7 @@ Select.prototype.init = function(selectElemId, transferToElemId , buttonELemId) 
   this.myButton.addEventListener("click", function(){
     _this.transfer();
   } , false);
-}
+};
 
 Select.prototype.transfer = function() {
   var selectedIndex = this.myBox.selectedIndex;
@@ -20,7 +20,7 @@ Select.prototype.transfer = function() {
     this.myBox.remove(selectedIndex);
     this.transferToBox.add(option);
   }
-}
+};
 
 var firstBox = new Select('box-one','box-two','add-btn');
 var secondBox = new Select('box-two','box-one','rmv-btn');

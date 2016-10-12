@@ -1,5 +1,5 @@
 function Match(){
-  this.RegString = /^\d{1,}$/i;
+  this.RegString = /^\d{1,}$/gi;
   this.init();
 }
 
