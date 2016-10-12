@@ -8,7 +8,7 @@ function Validator(){
   this.notificationBox = dom.getElementById('notifications');
 
   this.mailRegEx = /(.+)@(.+){2,}\.(.+){2,}/gi;// /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi;
-  this.urlRegEx = /^(https?:\/\/)?((www)\.)?((.+)\.)?(.+)\.(.{2,})$/gi;// /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i;
+  this.urlRegEx = /^(https?:\/\/)?((www)\.)?((.+)\.)?(.+)\.(.{2,})$/i;// /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i;
   this.init();
 }
 
@@ -28,14 +28,14 @@ Validator.prototype.hasValue = function (elem){
   return !(!value || !value.trim());
 };
 
-Validator.prototype.ValidateMail = function(elem) {
+Validator.prototype.validateMail = function(elem) {
   if (!this.hasValue(elem) || !Elem.checkValidity()) {
     return false;
   }
   return this.mailRegEx.test(elem.value.trim());
 };
 
-Validator.prototype.ValidateURL = function(elem) {
+Validator.prototype.validateURL = function(elem) {
   if (!this.hasValue(elem)) {
     return false;
   }
@@ -60,7 +60,7 @@ Validator.prototype.doValidation = function(){
       alert('Please provide your login Id');
   }
 
-  if (!this.ValidateMail(this.emailBox)) {
+  if (!this.validateMail(this.emailBox)) {
       allValid = false;
       alert('Please provide a valid email address');
   }
