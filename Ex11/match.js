@@ -15,9 +15,7 @@ Match.prototype.test = function(){
   var dom = document;
   var boxOne = dom.getElementById('box-one');
   var boxTwo = dom.getElementById('box-two');
-  if(!isNaN(boxOne.value.trim())){
-    boxTwo.value = 'true';
-  }
+  boxTwo.value = !isNaN(boxOne.value.trim());
   
 };
 

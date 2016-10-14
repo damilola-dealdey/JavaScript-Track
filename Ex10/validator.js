@@ -1,4 +1,5 @@
-function Validator(){
+function Validator() {
+  var dom = document;
   this.loginIdBox = dom.getElementById('loginId');
   this.emailBox = dom.getElementById('email');
   this.nameBox = dom.getElementById('myName');
@@ -14,28 +15,28 @@ function Validator(){
 
 Validator.prototype.init = function () {
   var dom = document;
-  var _this = this;  
+  var _this = this;
 
   var formButton = dom.getElementById('btnGO');
-  formButton.addEventListener("click", function(){
+  formButton.addEventListener("click", function () {
     _this.doValidation();
-  } , false);
+  }, false);
 
 };
 
-Validator.prototype.hasValue = function (elem){
-  var value = elem.value;  
+Validator.prototype.hasValue = function (elem) {
+  var value = elem.value;
   return !(!value || !value.trim());
 };
 
-Validator.prototype.validateMail = function(elem) {
+Validator.prototype.validateMail = function (elem) {
   if (!this.hasValue(elem) || !Elem.checkValidity()) {
     return false;
   }
   return this.mailRegEx.test(elem.value.trim());
 };
 
-Validator.prototype.validateURL = function(elem) {
+Validator.prototype.validateURL = function (elem) {
   if (!this.hasValue(elem)) {
     return false;
   }
@@ -44,45 +45,45 @@ Validator.prototype.validateURL = function(elem) {
 };
 
 
-Validator.prototype.hasMinValue = function(elem, length) {
+Validator.prototype.hasMinValue = function (elem, length) {
   if (!this.hasValue(elem)) {
     return false;
   }
 
-  return elem.value.length >= length ;
+  return elem.value.length >= length;
 };
 
-Validator.prototype.doValidation = function(){
+Validator.prototype.doValidation = function () {
   var allValid = true;
 
   if (!this.hasValue(this.loginIdBox)) {
-      allValid = false;
-      alert('Please provide your login Id');
+    allValid = false;
+    alert('Please provide your login Id');
   }
 
   if (!this.validateMail(this.emailBox)) {
-      allValid = false;
-      alert('Please provide a valid email address');
+    allValid = false;
+    alert('Please provide a valid email address');
   }
 
   if (!this.hasValue(this.nameBox)) {
-      allValid = false;
-      alert('Please provide your name');
+    allValid = false;
+    alert('Please provide your name');
   }
 
   if (!this.hasValue(this.timezoneBox)) {
-      allValid = false;
-      alert('Please provide select your timezone');
+    allValid = false;
+    alert('Please provide select your timezone');
   }
 
   if (!this.hasValue(this.homepageBox)) {
-      allValid = false;
-      alert('Please provide your homepage');
+    allValid = false;
+    alert('Please provide your homepage');
   }
 
   if (!this.hasMinValue(this.aboutBox, 50)) {
-      allValid = false;
-      alert('Tell us about yourself in not less than 50 characters.');
+    allValid = false;
+    alert('Tell us about yourself in not less than 50 characters.');
   }
 
   alert(this.notificationBox.checked ? 'You will receive notifications' : 'You will not receive notifications');
