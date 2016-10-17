@@ -1,5 +1,5 @@
 function Match(){
-  this.urlRegEx = /^(https?:\/\/)?((www)\.)?((.+)\.)?((.+)\.([^\/]{2,}))(\/.*)$/i;// I removed the 'g' tag , some bad voodoo i need to understand
+  this.urlRegEx = /^(https?:\/\/)?((www)\.)?((.+)\.)?((.+)\.([^\/]{2,}))(\/(.*))?$/i;// I removed the 'g' tag , some bad voodoo i need to understand
   //this.subUrlRegEx = /^((\S+)?\.)?((\S+)\.(\S+))$/i;
   this.init();
 }

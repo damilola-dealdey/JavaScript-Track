@@ -30,17 +30,10 @@ Validator.prototype.hasValue = function (elem) {
 };
 
 Validator.prototype.validateMail = function (elem) {
-  if (!this.hasValue(elem) || !Elem.checkValidity()) {
-    return false;
-  }
-  return this.mailRegEx.test(elem.value.trim());
+  return (this.mailRegEx.test(elem.value.trim()));
 };
 
 Validator.prototype.validateURL = function (elem) {
-  if (!this.hasValue(elem)) {
-    return false;
-  }
-
   return this.urlRegEx.test(elem.value);
 };
 
@@ -61,9 +54,14 @@ Validator.prototype.doValidation = function () {
     alert('Please provide your login Id');
   }
 
-  if (!this.validateMail(this.emailBox)) {
+  if (this.hasValue(this.emailBox)) {
+    if (!this.validateMail(this.emailBox)) {
+      allValid = false;
+      alert('Please provide a valid email address');
+    }
+  } else {
     allValid = false;
-    alert('Please provide a valid email address');
+    alert('Please provide an email address');
   }
 
   if (!this.hasValue(this.nameBox)) {
@@ -76,7 +74,12 @@ Validator.prototype.doValidation = function () {
     alert('Please provide select your timezone');
   }
 
-  if (!this.hasValue(this.homepageBox)) {
+  if (this.hasValue(this.homepageBox)) {
+    if (!this.validateURL(this.homepageBox)) {
+      allValid = false;
+      alert('Please provide a vaild URL for your homepage.');
+    }
+  } else {
     allValid = false;
     alert('Please provide your homepage');
   }
@@ -93,4 +96,4 @@ Validator.prototype.doValidation = function () {
   }
 };
 
-var validator = new Validator();
+new Validator();
